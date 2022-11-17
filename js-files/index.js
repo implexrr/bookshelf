@@ -1,11 +1,10 @@
 let myLibrary = [];
-
-let form = document.querySelector("form");
 let addBook = document.querySelector("#add-book");
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
-let read = document.querySelector("#read");
+
+let form = document.querySelector("form");
 form.addEventListener("submit", addBookToLibrary);
 
 function Book(title, author, pages, read) {
@@ -23,13 +22,7 @@ function addBookToLibrary(e) {
   e.preventDefault();
   let bookToAdd = new Book(title.value, author.value, pages.value, read.value);
   myLibrary.push(bookToAdd);
-  return true;
+  form.reset();
 }
 
-// let bookToAdd;
-// bookToAdd = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', true);
-// addBookToLibrary(bookToAdd);
-// bookToAdd = new Book('The it', 'J Tolkien', '5 pages', true);
-// addBookToLibrary(bookToAdd);
-// bookToAdd = new Book('t', 'Jen', '329 pages', false);
-// addBookToLibrary(bookToAdd);
+

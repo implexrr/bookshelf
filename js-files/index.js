@@ -13,9 +13,6 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-  this.info = function() {
-    console.log(`${this.title} by ${this.author} is ${this.pages} long, ${read}`)
-  }
 }
 
 function addBookToLibrary(e) {
@@ -24,5 +21,3 @@ function addBookToLibrary(e) {
   myLibrary.push(bookToAdd);
   form.reset();
 }
-
-

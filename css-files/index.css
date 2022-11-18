@@ -1,7 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: aquamarine;
+  width: 100vh;
+  height: 100%;
 }
-#bookshelf {
 
+#bookshelf {
+  border: solid red;
   display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  width: 500px;
+  height: 500px
+}
+
+.book {
+  background-color: blue;
+  opacity: 0.6;
+  height: 200px;
 }

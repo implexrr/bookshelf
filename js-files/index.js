@@ -1,8 +1,13 @@
 let myLibrary = [];
 let addBook = document.querySelector("#add-book");
+
 let title = document.querySelector("#title");
 let author = document.querySelector("#author");
 let pages = document.querySelector("#pages");
+let read = document.querySelector("#read");
+
+
+
 let bookshelf = document.querySelector("#bookshelf");
 
 let form = document.querySelector("form");
@@ -31,19 +36,26 @@ function addToDisplay() {
 
 function createBook() {
   let book = document.createElement("div");
+
   let bookTitle = document.createElement("div");
   let bookAuthor = document.createElement("div");
   let bookPages = document.createElement("div");
-  let bookRead = document.createElement("div");
+  let changeCompletion = document.createElement("input");
+  changeCompletion.type = "checkbox";
+  if (read.checked == true) {
+    changeCompletion.checked = true;
+  }
+
   let bookRemove = document.createElement("button");
 
   book.dataset.index = myLibrary.length - 1;
 
   book.classList.add("book");
+
   bookTitle.classList.add("title");
   bookAuthor.classList.add("author");
   bookPages.classList.add("pages");
-  bookRead.classList.add("read");
+
   bookRemove.classList.add("remove");
 
   bookRemove.addEventListener("click", removeBook);
@@ -51,13 +63,15 @@ function createBook() {
   bookTitle.textContent = myLibrary.at(-1).title;
   bookAuthor.textContent = myLibrary.at(-1).author;
   bookPages.textContent = myLibrary.at(-1).pages;
-  bookRead.textContent = myLibrary.at(-1).read;
 
   book.appendChild(bookTitle);
   book.appendChild(bookAuthor);
   book.appendChild(bookPages);
-  book.appendChild(bookRead);
+  book.appendChild(changeCompletion);
+  
   book.appendChild(bookRemove);
+
+
   return book;
 }
 
@@ -71,6 +85,6 @@ function removeBook(e) {
   }
 }
 
-function changePagesRead () {
-
+function changeReadStatus () {
+  
 }

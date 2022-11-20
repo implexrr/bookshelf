@@ -35,13 +35,18 @@ function createBook() {
   let bookAuthor = document.createElement("div");
   let bookPages = document.createElement("div");
   let bookRead = document.createElement("div");
-  book.dataset.stoof = myLibrary.length -1;
+  let bookRemove = document.createElement("button");
 
-  book.classList.add(".book");
-  bookTitle.classList.add(".title");
-  bookAuthor.classList.add(".author");
-  bookPages.classList.add(".pages");
-  bookRead.classList.add(".read");
+  book.dataset.index = myLibrary.length - 1;
+
+  book.classList.add("book");
+  bookTitle.classList.add("title");
+  bookAuthor.classList.add("author");
+  bookPages.classList.add("pages");
+  bookRead.classList.add("read");
+  bookRemove.classList.add("remove");
+
+  bookRemove.addEventListener("click", removeBook);
 
   bookTitle.textContent = myLibrary.at(-1).title;
   bookAuthor.textContent = myLibrary.at(-1).author;
@@ -52,11 +57,20 @@ function createBook() {
   book.appendChild(bookAuthor);
   book.appendChild(bookPages);
   book.appendChild(bookRead);
-  // newBook.textContent = myLibrary.at(-1).title;
-  // bookshelf.appendChild(newBook);
+  book.appendChild(bookRemove);
   return book;
 }
 
-function removeBook() {
-  
+function removeBook(e) {
+  let removeIndex = e.target.parentNode.dataset.index;
+  myLibrary.splice(removeIndex, 1);
+  e.target.parentNode.remove();
+  let books = document.querySelectorAll(".book");
+  for (let i = removeIndex; i < books.length; i++) {
+    books[i].dataset.index--;
+  }
+}
+
+function changePagesRead () {
+
 }

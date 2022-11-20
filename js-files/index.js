@@ -97,5 +97,5 @@ function changeReadStatus () {
 }
 
 function showUserForm(e) {
-  document.querySelector("form").style.display = 'block';
+  document.querySelector("form").style.display = 'grid';
 }

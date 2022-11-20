@@ -1,4 +1,8 @@
 let myLibrary = [];
+
+let displayForm = document.querySelector("#display-form");
+displayForm.addEventListener("click", showUserForm);
+
 let addBook = document.querySelector("#add-book");
 
 let title = document.querySelector("#title");
@@ -12,6 +16,7 @@ let bookshelf = document.querySelector("#bookshelf");
 
 let form = document.querySelector("form");
 form.addEventListener("submit", addBookToLibrary);
+
 
 function Book(title, author, pages, read) {
   // the constructor...
@@ -70,7 +75,8 @@ function createBook() {
   book.appendChild(changeCompletion);
   
   book.appendChild(bookRemove);
-
+  
+  form.style.display = "none";
 
   return book;
 }
@@ -85,6 +91,11 @@ function removeBook(e) {
   }
 }
 
+
 function changeReadStatus () {
   
+}
+
+function showUserForm(e) {
+  document.querySelector("form").style.display = 'block';
 }

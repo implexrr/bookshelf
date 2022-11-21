@@ -29,7 +29,7 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary(e) {
   e.preventDefault();
-  let bookToAdd = new Book(title.value, author.value, pages.value, read.value);
+  let bookToAdd = new Book(title.value, author.value, pages.value, read.checked);
   myLibrary.push(bookToAdd);
   addToDisplay();
   form.reset();
@@ -51,6 +51,8 @@ function createBook() {
   if (read.checked == true) {
     changeCompletion.checked = true;
   }
+  changeCompletion.addEventListener("input", changeReadStatus);
+  
 
   let bookRemove = document.createElement("button");
 
@@ -80,7 +82,7 @@ function createBook() {
   form.style.display = "none";
   displayForm.style.display = 'flex';
   displayFormContainer.style.display = 'flex';
-
+  changeCompletion.dispatchEvent(new Event("input"));
   return book;
 }
 
@@ -95,8 +97,21 @@ function removeBook(e) {
 }
 
 
-function changeReadStatus () {
-  
+function changeReadStatus (e) {
+  // if (e.target.checked) {
+  //   e.target.style.backgroundColor = "green";
+  // }
+  // else {
+  //   e.target.style.backgroundColor = "red";
+  // }
+  if (e.target.checked) {
+    e.target.parentNode.style.backgroundColor = "aliceblue";
+  }
+  else {
+    e.target.parentNode.style.backgroundColor = "beige";
+  }
+  console.log(e.target.checked);
+  myLibrary[e.target.parentNode.dataset.index].read = e.target.checked;
 }
 
 function showUserForm(e) {

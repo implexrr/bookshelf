@@ -48,7 +48,7 @@ function createBook() {
   let bookPages = document.createElement("div");
 
   let completionPair = document.createElement("div");
-    completionPair.setAttribute("class", "completion-pair");
+  completionPair.setAttribute("class", "completion-pair");
 
 
   let changeCompletionLabel = document.createElement("label");
@@ -113,7 +113,7 @@ function removeBook(e) {
 
 function changeReadStatus (e) {
   if (e.target.checked) {
-    e.target.parentNode.parentNode.style.backgroundColor = "aliceblue";
+    e.target.parentNode.parentNode.style.backgroundColor = "darkgreen";
   }
   else {
     e.target.parentNode.parentNode.style.backgroundColor = "beige";

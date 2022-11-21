@@ -136,6 +136,13 @@ input {
   scrollbar-width: none;
 }
 
+.title, .author, .pages {
+  display: flex;
+  border: solid black;
+  justify-content: center;
+  align-items: center;
+}
+
 .book::-webkit-scrollbar, .title::-webkit-scrollbar, .author::-webkit-scrollbar, .pages::-webkit-scrollbar, .read::-webkit-scrollbar {
   display: none;
 }
@@ -146,6 +153,24 @@ input {
   align-items: center;
 }
 
-.completionPair {
+.completion-pair {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid black;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 100%;
+  border: solid grey;
+  height: 20px;
+  width: 20px;
+  margin-left: 5px;
+  background-color: rgb(253, 253, 253);
+}
+input[type="checkbox"]:checked {
+  background-color:rgb(79, 180, 79);
 }

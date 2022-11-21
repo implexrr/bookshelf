@@ -113,10 +113,10 @@ function removeBook(e) {
 
 function changeReadStatus (e) {
   if (e.target.checked) {
-    e.target.parentNode.parentNode.style.backgroundColor = "darkgreen";
+    e.target.parentNode.parentNode.style.backgroundColor = "rgb(134, 133, 191)";
   }
   else {
-    e.target.parentNode.parentNode.style.backgroundColor = "beige";
+    e.target.parentNode.parentNode.style.backgroundColor = "grey";
   }
   console.log(e.target.checked);
   myLibrary[e.target.parentNode.parentNode.dataset.index].read = e.target.checked;

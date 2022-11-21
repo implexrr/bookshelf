@@ -1,5 +1,6 @@
 let myLibrary = [];
 
+let displayFormContainer = document.querySelector("#display-form-container");
 let displayForm = document.querySelector("#display-form");
 displayForm.addEventListener("click", showUserForm);
 
@@ -77,6 +78,8 @@ function createBook() {
   book.appendChild(bookRemove);
   
   form.style.display = "none";
+  displayForm.style.display = 'flex';
+  displayFormContainer.style.display = 'flex';
 
   return book;
 }
@@ -97,5 +100,7 @@ function changeReadStatus () {
 }
 
 function showUserForm(e) {
-  document.querySelector("form").style.display = 'grid';
+  form.style.display = 'grid';
+  displayForm.style.display = 'none';
+  displayFormContainer.style.display = 'none';
 }

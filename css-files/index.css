@@ -13,7 +13,6 @@ html {
 }
 
 body {
-  background-color: aquamarine;
   width: 100%;
   height: 100%;
   display: grid;
@@ -24,9 +23,63 @@ body {
 form {
   grid-row: 1 / 2;
   grid-column: 1 / -1;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: repeat(4, 110px) 1fr;
+  grid-template-areas:
+  "title-pair title-pair author-pair author-pair add-book"
+  "pages-pair pages-pair read-pair read-pair add-book"
+  /* display: none; */
+}
+
+.label-input-pair {
+  padding-left: 5px;
+}
+
+input {
+  margin-left: 5px;
+  padding-left: 5px;
+  width: 140px;
+}
+
+#title-pair {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: solid black;
+  grid-area: title-pair;
+}
+#author-pair {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: solid black;
+  grid-area: author-pair;
+}
+#pages-pair {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: solid black;
+  grid-area: pages-pair;
+}
+#read-pair {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: solid black;
+  grid-area: read-pair;
+}
+#add-book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid black;
+  grid-area: add-book;
 }
 
 #display-form-container {
+  display: none;
   background-color: blue;
   grid-row: 1 / 2;
   grid-column: 1 / -1;
@@ -39,9 +92,10 @@ form {
 }
 
 #bookshelf {
-  background-color: red;
+  background-color: beige;
   grid-row: 2 / 3;
   grid-column: 1 / -1;
+  min-width: 600px;
 }
 
 .book {

@@ -46,13 +46,25 @@ function createBook() {
   let bookTitle = document.createElement("div");
   let bookAuthor = document.createElement("div");
   let bookPages = document.createElement("div");
+
+  let completionPair = document.createElement("div");
+    completionPair.setAttribute("class", "completion-pair");
+
+
+  let changeCompletionLabel = document.createElement("label");
+  changeCompletionLabel.setAttribute("for", "change-completion");
+  changeCompletionLabel.textContent = "Read?";
+
   let changeCompletion = document.createElement("input");
   changeCompletion.type = "checkbox";
+  changeCompletion.setAttribute("class", "change-completion");
   if (read.checked == true) {
     changeCompletion.checked = true;
   }
   changeCompletion.addEventListener("input", changeReadStatus);
   
+  completionPair.appendChild(changeCompletionLabel);
+  completionPair.appendChild(changeCompletion);
 
   let bookRemove = document.createElement("button");
 
@@ -65,17 +77,19 @@ function createBook() {
   bookPages.classList.add("pages");
 
   bookRemove.classList.add("remove");
-
+  bookRemove.textContent = "Remove book";
   bookRemove.addEventListener("click", removeBook);
 
-  bookTitle.textContent = myLibrary.at(-1).title;
-  bookAuthor.textContent = myLibrary.at(-1).author;
-  bookPages.textContent = myLibrary.at(-1).pages;
+  bookTitle.textContent = `Title: ${myLibrary.at(-1).title}`;
+  bookAuthor.textContent = `Author: ${myLibrary.at(-1).author}`;
+  bookPages.textContent = `Pages: ${myLibrary.at(-1).pages}`;
 
   book.appendChild(bookTitle);
   book.appendChild(bookAuthor);
   book.appendChild(bookPages);
-  book.appendChild(changeCompletion);
+
+  
+  book.appendChild(completionPair);
   
   book.appendChild(bookRemove);
   
@@ -98,20 +112,14 @@ function removeBook(e) {
 
 
 function changeReadStatus (e) {
-  // if (e.target.checked) {
-  //   e.target.style.backgroundColor = "green";
-  // }
-  // else {
-  //   e.target.style.backgroundColor = "red";
-  // }
   if (e.target.checked) {
-    e.target.parentNode.style.backgroundColor = "aliceblue";
+    e.target.parentNode.parentNode.style.backgroundColor = "aliceblue";
   }
   else {
-    e.target.parentNode.style.backgroundColor = "beige";
+    e.target.parentNode.parentNode.style.backgroundColor = "beige";
   }
   console.log(e.target.checked);
-  myLibrary[e.target.parentNode.dataset.index].read = e.target.checked;
+  myLibrary[e.target.parentNode.parentNode.dataset.index].read = e.target.checked;
 }
 
 function showUserForm(e) {

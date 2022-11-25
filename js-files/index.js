@@ -9,7 +9,6 @@ for (let i = 0; i < pairs.length; i++) {
   console.log(pairs[i].id);
   window[pairs[i].id] = document.querySelector(`#${pairs[i].id}`);
 }
-let addBook = document.querySelector("#add-book");
 
 let bookshelf = document.querySelector("#bookshelf");
 
@@ -124,8 +123,4 @@ function showUserForm(e) {
   form.style.display = 'grid';
   displayForm.style.display = 'none';
   displayFormContainer.style.display = 'none';
-}
-
-function setGlobals {
-  
 }

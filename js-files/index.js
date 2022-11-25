@@ -6,12 +6,11 @@ displayForm.addEventListener("click", showUserForm);
 
 let addBook = document.querySelector("#add-book");
 
-let title = document.querySelector("#title");
-let author = document.querySelector("#author");
-let pages = document.querySelector("#pages");
-let read = document.querySelector("#read");
-
-
+let pairs = document.querySelectorAll('.label-input-pair input');
+for (let i = 0; i < pairs.length; i++) {
+  console.log(pairs[i].id);
+  window[pairs[i].id] = document.querySelector(`#${pairs[i].id}`);
+}
 
 let bookshelf = document.querySelector("#bookshelf");
 

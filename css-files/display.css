@@ -1,0 +1,12 @@
+/* DISPLAY */
+form, .book::-webkit-scrollbar, .title::-webkit-scrollbar, .author::-webkit-scrollbar, .pages::-webkit-scrollbar, .read::-webkit-scrollbar {
+  display: none;
+}
+
+body, #bookshelf, .book {
+  display: grid;
+}
+
+.label-input-pair, .add-book-container, #add-book, #display-form-container, #display-form, .flexbox-space-between, .completion-pair {
+  display: flex;
+}

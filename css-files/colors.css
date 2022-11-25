@@ -1,0 +1,28 @@
+/* COLORS */
+input[type="checkbox"] {
+  background-color: rgb(253, 253, 253);
+}
+
+form {
+  background-color: rgb(134, 133, 191);
+}
+
+#add-book {
+  background-color: rgb(106, 119, 199);
+}
+
+#display-form {
+  background-color: rgb(14, 10, 130);
+}
+
+#bookshelf {
+  background-color: rgb(5, 4, 36);
+}
+
+.remove {
+  background-color: rgb(106, 119, 199);
+}
+
+form, #add-book, #display-form, .book, .remove {
+  color: white;
+}

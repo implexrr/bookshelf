@@ -1,0 +1,6 @@
+/* SCROLL */
+.book, .title, .author, .pages { 
+  overflow: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

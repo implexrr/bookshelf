@@ -1,0 +1,16 @@
+/* BORDERS */
+input, #add-book, .remove {
+  border: none;
+}
+
+input[type="checkbox"] {
+  border: solid grey;
+}
+
+input, #add-book, .book, .remove {
+  border-radius: 15px;
+}
+
+input[type="checkbox"] {
+  border-radius: 100%;
+}

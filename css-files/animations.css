@@ -1,0 +1,8 @@
+/* ANIMATIONS */
+.remove:hover, #display-form:hover, #add-book:hover, input:hover {
+  opacity: 0.8;
+}
+
+input[type="checkbox"]:checked {
+  background-color:rgb(79, 180, 79);
+}

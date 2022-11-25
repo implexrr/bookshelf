@@ -1,0 +1,12 @@
+/* META */
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Open Sans', sans-serif;
+}
+
+html, body, #display-form, input[type="checkbox"] {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}

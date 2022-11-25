@@ -6,10 +6,11 @@ let bookshelf = document.querySelector("#bookshelf");
 // Add functionality to "Add Book" button
 let displayFormContainer = document.querySelector("#display-form-container");
 let displayForm = document.querySelector("#display-form");
-displayForm.addEventListener("click", changeFormDisplay);
+
 
 // Add functionality to form submit button
 let form = document.querySelector("form");
+displayForm.addEventListener("click", function() {changeBannerDisplay("grid", "none")});
 form.addEventListener("submit", addBookToLibrary);
 
 // Assign variables to form inputs
@@ -40,9 +41,9 @@ function addToDisplay() {
   bookshelf.appendChild(newBook);
 }
 
-function createElement(elType, attributeType, attributeID, textContent) {
+function createElement(elType, attributeType, attributeName, textContent) {
   let element = document.createElement(elType);
-  element.setAttribute(attributeType, attributeID);
+  element.setAttribute(attributeType, attributeName);
   element.textContent = textContent;
   return element;
 }
@@ -50,40 +51,21 @@ function createElement(elType, attributeType, attributeID, textContent) {
 function createBook() {
 
   let book = createElement("div", "class", "book", "");
+  let bookTitle = createElement("div", "class", "title", `Title: ${myLibrary.at(-1).title}`);
+  let bookAuthor = createElement("div", "class", "author", `Author: ${myLibrary.at(-1).author}`);
+  let bookPages = createElement("div", "class", "pages", `Pages: ${myLibrary.at(-1).pages}`);
+  let completionPair = createElement("div", "class", "completion-pair", "");
+  let changeCompletionLabel = createElement("label", "for", "change-completion", "Read?");
+  let changeCompletion = createElement("input", "class", "change-completion", "");
+  let bookRemove = createElement("button", "class", "remove", "Remove book");
 
-  let bookTitle = document.createElement("div");
-  bookTitle.classList.add("title");
-  bookTitle.textContent = `Title: ${myLibrary.at(-1).title}`;
-
-  let bookAuthor = document.createElement("div");
-  bookAuthor.classList.add("author");
-  bookAuthor.textContent = `Author: ${myLibrary.at(-1).author}`;
-
-  let bookPages = document.createElement("div");
-  bookPages.classList.add("pages");
-  bookPages.textContent = `Pages: ${myLibrary.at(-1).pages}`;
-
-  let completionPair = document.createElement("div");
-  completionPair.classList.add("completion-pair");
-
-  let changeCompletionLabel = document.createElement("label");
-  changeCompletionLabel.setAttribute("for", "change-completion");
-  changeCompletionLabel.textContent = "Read?";
-
-  let changeCompletion = document.createElement("input");
-  changeCompletion.type = "checkbox";
-  changeCompletion.classList.add("change-completion");
-  if (read.checked == true) {
-    changeCompletion.checked = true;
-  }
-  changeCompletion.addEventListener("input", changeReadStatus);
-
-
-  let bookRemove = document.createElement("button");
-  bookRemove.classList.add("remove");
-  bookRemove.textContent = "Remove book";
-  bookRemove.addEventListener("click", removeBook);
   book.dataset.index = myLibrary.length - 1;
+  changeCompletion.type = "checkbox";
+  if (read.checked == true) changeCompletion.checked = true;
+  
+
+  changeCompletion.addEventListener("input", changeReadStatus);
+  bookRemove.addEventListener("click", removeBook);
 
   book.appendChild(bookTitle);
   book.appendChild(bookAuthor);
@@ -93,9 +75,7 @@ function createBook() {
   book.appendChild(completionPair);
   book.appendChild(bookRemove);
   
-  form.style.display = "none";
-  displayForm.style.display = 'flex';
-  displayFormContainer.style.display = 'flex';
+  changeBannerDisplay("none", "flex");
   changeCompletion.dispatchEvent(new Event("input"));
   return book;
 }
@@ -141,18 +121,19 @@ function changeDatasetStatus(e, container) {
 }
 
 // Change what to display in top banner
-function changeFormDisplay() {
-  showForm();
-  hideFormPrompt();
+function changeBannerDisplay(displayModeForm, displayModePrompt) {
+  changeFormDisplay(displayModeForm);
+  changePromptDisplay(displayModePrompt);
 }
 
 // Display user form
-function showForm() {
-  form.style.display = 'grid';
+function changeFormDisplay(displayMode) {
+  form.style.display = displayMode;
 }
 
 // Hide prompt to display user form
-function hideFormPrompt() {
-  displayForm.style.display = 'none';
-  displayFormContainer.style.display = 'none';
+function changePromptDisplay(displayMode) {
+  displayForm.style.display = displayMode;
+  displayFormContainer.style.display = displayMode;
 }
+// ------------------------

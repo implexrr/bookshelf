@@ -6,7 +6,7 @@ let bookshelf = document.querySelector("#bookshelf");
 // Add functionality to "Add Book" button
 let displayFormContainer = document.querySelector("#display-form-container");
 let displayForm = document.querySelector("#display-form");
-displayForm.addEventListener("click", showUserForm);
+displayForm.addEventListener("click", changeFormDisplay);
 
 // Add functionality to form submit button
 let form = document.querySelector("form");
@@ -122,8 +122,22 @@ function changeReadStatus (e) {
   myLibrary[e.target.parentNode.parentNode.dataset.index].read = e.target.checked;
 }
 
-function showUserForm(e) {
+// function showUserForm(e) {
+//   form.style.display = 'grid';
+//   displayForm.style.display = 'none';
+//   displayFormContainer.style.display = 'none';
+// }
+
+function changeFormDisplay() {
+  showForm();
+  hideFormPrompt();
+}
+
+function showForm() {
   form.style.display = 'grid';
+}
+
+function hideFormPrompt() {
   displayForm.style.display = 'none';
   displayFormContainer.style.display = 'none';
 }

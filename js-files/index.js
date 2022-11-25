@@ -1,28 +1,31 @@
+// GLOBALS
+// Initialize empty library array
 let myLibrary = [];
+let bookshelf = document.querySelector("#bookshelf");
 
+// Add functionality to "Add Book" button
 let displayFormContainer = document.querySelector("#display-form-container");
 let displayForm = document.querySelector("#display-form");
 displayForm.addEventListener("click", showUserForm);
 
-let pairs = document.querySelectorAll('.label-input-pair input');
-for (let i = 0; i < pairs.length; i++) {
-  console.log(pairs[i].id);
-  window[pairs[i].id] = document.querySelector(`#${pairs[i].id}`);
-}
-
-let bookshelf = document.querySelector("#bookshelf");
-
+// Add functionality to form submit button
 let form = document.querySelector("form");
 form.addEventListener("submit", addBookToLibrary);
 
+// Assign variables to form inputs
+let pairs = document.querySelectorAll('.label-input-pair input');
+for (let i = 0; i < pairs.length; i++) {
+  window[pairs[i].id] = document.querySelector(`#${pairs[i].id}`);
+}
 
+// Book constructor
 function Book(title, author, pages, read) {
-  // the constructor...
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
 }
+
 
 function addBookToLibrary(e) {
   e.preventDefault();

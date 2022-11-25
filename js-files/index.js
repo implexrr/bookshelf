@@ -40,16 +40,31 @@ function addToDisplay() {
   bookshelf.appendChild(newBook);
 }
 
+function createElement(elType, attributeType, attributeID, textContent) {
+  let element = document.createElement(elType);
+  element.setAttribute(attributeType, attributeID);
+  element.textContent = textContent;
+  return element;
+}
+
 function createBook() {
-  let book = document.createElement("div");
+
+  let book = createElement("div", "class", "book", "");
 
   let bookTitle = document.createElement("div");
+  bookTitle.classList.add("title");
+  bookTitle.textContent = `Title: ${myLibrary.at(-1).title}`;
+
   let bookAuthor = document.createElement("div");
+  bookAuthor.classList.add("author");
+  bookAuthor.textContent = `Author: ${myLibrary.at(-1).author}`;
+
   let bookPages = document.createElement("div");
+  bookPages.classList.add("pages");
+  bookPages.textContent = `Pages: ${myLibrary.at(-1).pages}`;
 
   let completionPair = document.createElement("div");
-  completionPair.setAttribute("class", "completion-pair");
-
+  completionPair.classList.add("completion-pair");
 
   let changeCompletionLabel = document.createElement("label");
   changeCompletionLabel.setAttribute("for", "change-completion");
@@ -57,40 +72,25 @@ function createBook() {
 
   let changeCompletion = document.createElement("input");
   changeCompletion.type = "checkbox";
-  changeCompletion.setAttribute("class", "change-completion");
+  changeCompletion.classList.add("change-completion");
   if (read.checked == true) {
     changeCompletion.checked = true;
   }
   changeCompletion.addEventListener("input", changeReadStatus);
-  
-  completionPair.appendChild(changeCompletionLabel);
-  completionPair.appendChild(changeCompletion);
+
 
   let bookRemove = document.createElement("button");
-
-  book.dataset.index = myLibrary.length - 1;
-
-  book.classList.add("book");
-
-  bookTitle.classList.add("title");
-  bookAuthor.classList.add("author");
-  bookPages.classList.add("pages");
-
   bookRemove.classList.add("remove");
   bookRemove.textContent = "Remove book";
   bookRemove.addEventListener("click", removeBook);
-
-  bookTitle.textContent = `Title: ${myLibrary.at(-1).title}`;
-  bookAuthor.textContent = `Author: ${myLibrary.at(-1).author}`;
-  bookPages.textContent = `Pages: ${myLibrary.at(-1).pages}`;
+  book.dataset.index = myLibrary.length - 1;
 
   book.appendChild(bookTitle);
   book.appendChild(bookAuthor);
   book.appendChild(bookPages);
-
-  
+  completionPair.appendChild(changeCompletionLabel);
+  completionPair.appendChild(changeCompletion);
   book.appendChild(completionPair);
-  
   book.appendChild(bookRemove);
   
   form.style.display = "none";

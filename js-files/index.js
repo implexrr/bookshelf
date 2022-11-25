@@ -4,13 +4,12 @@ let displayFormContainer = document.querySelector("#display-form-container");
 let displayForm = document.querySelector("#display-form");
 displayForm.addEventListener("click", showUserForm);
 
-let addBook = document.querySelector("#add-book");
-
 let pairs = document.querySelectorAll('.label-input-pair input');
 for (let i = 0; i < pairs.length; i++) {
   console.log(pairs[i].id);
   window[pairs[i].id] = document.querySelector(`#${pairs[i].id}`);
 }
+let addBook = document.querySelector("#add-book");
 
 let bookshelf = document.querySelector("#bookshelf");
 
@@ -125,4 +124,8 @@ function showUserForm(e) {
   form.style.display = 'grid';
   displayForm.style.display = 'none';
   displayFormContainer.style.display = 'none';
+}
+
+function setGlobals {
+  
 }

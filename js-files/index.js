@@ -112,21 +112,18 @@ function removeBook(e) {
 
 
 function changeReadStatus (e) {
-  if (e.target.checked) {
-    e.target.parentNode.parentNode.style.backgroundColor = "rgb(134, 133, 191)";
-  }
-  else {
-    e.target.parentNode.parentNode.style.backgroundColor = "grey";
-  }
-  console.log(e.target.checked);
-  myLibrary[e.target.parentNode.parentNode.dataset.index].read = e.target.checked;
+  let bookCard = e.target.parentNode.parentNode;
+  changeContainerColor(e, bookCard);
+  changeDatasetStatus(e, bookCard);
 }
 
-// function showUserForm(e) {
-//   form.style.display = 'grid';
-//   displayForm.style.display = 'none';
-//   displayFormContainer.style.display = 'none';
-// }
+function changeContainerColor(e, container) {
+  e.target.checked ? container.style.backgroundColor = "rgb(134, 133, 191)": container.style.backgroundColor = "grey";
+}
+
+function changeDatasetStatus(e, container) {
+  myLibrary[container.dataset.index].read = e.target.checked;
+}
 
 function changeFormDisplay() {
   showForm();

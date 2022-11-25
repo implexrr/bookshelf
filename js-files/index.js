@@ -1,4 +1,3 @@
-// GLOBALS
 // Initialize empty library array
 let myLibrary = [];
 let bookshelf = document.querySelector("#bookshelf");

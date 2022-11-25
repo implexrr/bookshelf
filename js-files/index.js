@@ -100,40 +100,58 @@ function createBook() {
   return book;
 }
 
+// Remove book from all associated data structures and shift relevant indices
 function removeBook(e) {
-  let removeIndex = e.target.parentNode.dataset.index;
-  myLibrary.splice(removeIndex, 1);
-  e.target.parentNode.remove();
+  let bookCard = e.target.parentNode;
+  let bookIndex = bookCard.dataset.index;
+
+  deleteFromLibraryArray(myLibrary, bookIndex, 1);
+  bookCard.remove();
+  shiftBookIndices(bookIndex);
+}
+
+// Delete book from Library array
+function deleteFromLibraryArray(library, index, deletions) {
+  library.splice(index, deletions);
+}
+
+// Shift indices of consequent book elements
+function shiftBookIndices(toShift) {
   let books = document.querySelectorAll(".book");
-  for (let i = removeIndex; i < books.length; i++) {
+  for (let i = toShift; i < books.length; i++) {
     books[i].dataset.index--;
   }
 }
 
-
+// Change read status of a book
 function changeReadStatus (e) {
   let bookCard = e.target.parentNode.parentNode;
   changeContainerColor(e, bookCard);
   changeDatasetStatus(e, bookCard);
 }
 
+// Change container color of book
 function changeContainerColor(e, container) {
   e.target.checked ? container.style.backgroundColor = "rgb(134, 133, 191)": container.style.backgroundColor = "grey";
 }
 
+// Change dataset status of book
 function changeDatasetStatus(e, container) {
   myLibrary[container.dataset.index].read = e.target.checked;
 }
 
+// Change what to display in top banner
 function changeFormDisplay() {
   showForm();
   hideFormPrompt();
 }
 
+// Display user form
 function showForm() {
   form.style.display = 'grid';
 }
 
+// Hide prompt to display user form
 function hideFormPrompt() {
   displayForm.style.display = 'none';
   displayFormContainer.style.display = 'none';
